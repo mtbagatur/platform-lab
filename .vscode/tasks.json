@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Docker image",
+            "type": "shell",
+            "command": "cd app && docker build -t hello-app:dev ."
+        },
+        {
+            "label": "Create kind cluster",
+            "type": "shell",
+            "command": "kind create cluster --config kind-config.yaml"
+        },
+        {
+            "label": "Load image into kind",
+            "type": "shell",
+            "command": "kind load docker-image hello-app:dev --name platform-lab"
+        },
+        {
+            "label": "Terraform Apply Kubernetes",
+            "type": "shell",
+            "command": "cd infra/kubernetes && terraform init && terraform apply -auto-approve"
+        }
+    ]
+}
