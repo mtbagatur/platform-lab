@@ -61,7 +61,7 @@ resource "kubernetes_deployment" "app" {
 
           env {
             name  = "APP_VERSION"
-            value = "1.0.0"
+            value = "2.0.0"
           }
           env {
             name = "APP_MESSAGE"
@@ -144,6 +144,8 @@ resource "kubernetes_secret" "app_secret" {
   }
 
   data = {
-    SECRET_KEY = base64encode("super-secret-value")
+    SECRET_KEY = "super-secret-value"
   }
+
+  type = "Opaque"
 }
