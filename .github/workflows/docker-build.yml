@@ -24,11 +24,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/mtbagatur/hello-app
+      # - name: Extract metadata
+      #   id: meta
+      #   uses: docker/metadata-action@v5
+      #   with:
+      #     images: ghcr.io/mtbagatur/hello-app
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -38,4 +38,4 @@ jobs:
           tags: |
             ghcr.io/mtbagatur/hello-app:latest
             ghcr.io/mtbagatur/hello-app:${{ github.sha }}
-          labels: ${{ steps.meta.outputs.labels }}
+          # labels: ${{ steps.meta.outputs.labels }}
