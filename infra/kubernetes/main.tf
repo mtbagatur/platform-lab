@@ -72,6 +72,17 @@ resource "kubernetes_deployment" "app" {
               }
             }
           }
+
+          env {
+            name = "SECRET_KEY"
+            value_from {
+              secret_key_ref {
+                name = kubernetes_secret.app_secret.metadata[0].name
+                key  = "SECRET_KEY"
+              }
+            }
+          }
+
           readiness_probe {
             http_get {
               path = "/health"
@@ -123,5 +134,16 @@ resource "kubernetes_config_map" "app_config" {
 
   data = {
     APP_MESSAGE = "Hello from ConfigMap"
+  }
+}
+
+resource "kubernetes_secret" "app_secret" {
+  metadata {
+    name      = "hello-app-secret"
+    namespace = kubernetes_namespace.demo.metadata[0].name
+  }
+
+  data = {
+    SECRET_KEY = base64encode("super-secret-value")
   }
 }
