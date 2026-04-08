@@ -8,7 +8,12 @@ variable "app_name" {
   default = "hello-app"
 }
 
+# variable "image" {
+#   type    = string
+#   default = "hello-app:dev"
+# }
+
 variable "image" {
   type    = string
-  default = "hello-app:dev"
+  default = "ghcr.io/mtbagatur/hello-app:latest"
 }
