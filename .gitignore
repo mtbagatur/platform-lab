@@ -7,15 +7,15 @@ __pycache__/
 venv/
 
 # Terraform
-kubernetes/.terraform/
-kubernetes/.terraform.lock.hcl
-kubernetes/*.tfstate
-kubernetes/*.tfstate.*
-kubernetes/crash.log
-kubernetes/override.tf
-kubernetes/override.tf.json
-kubernetes/*_override.tf
-kubernetes/*_override.tf.json
+infra/kubernetes/.terraform/
+infra/kubernetes/.terraform.lock.hcl
+infra/kubernetes/*.tfstate
+infra/kubernetes/*.tfstate.*
+infra/kubernetes/crash.log
+infra/kubernetes/override.tf
+infra/kubernetes/override.tf.json
+infra/kubernetes/*_override.tf
+infra/kubernetes/*_override.tf.json
 
 # OS / Editor
 .DS_Store
