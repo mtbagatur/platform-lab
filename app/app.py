@@ -10,7 +10,8 @@ def home():
         "message": "Hello from VS Code + SSH + Docker + Terraform + Kubernetes + Azure",
         "hostname": socket.gethostname(),
         "environment": os.getenv("APP_ENV", "dev"),
-        "version": os.getenv("APP_VERSION", "1.0.0")
+        "version": os.getenv("APP_VERSION", "1.0.0"),
+        "config_message": os.getenv("APP_MESSAGE", "no-config")
     }
 
 @app.route("/health")
