@@ -63,7 +63,15 @@ resource "kubernetes_deployment" "app" {
             name  = "APP_VERSION"
             value = "1.0.0"
           }
-
+          env {
+            name = "APP_MESSAGE"
+            value_from {
+              config_map_key_ref {
+                name = kubernetes_config_map.app_config.metadata[0].name
+                key  = "APP_MESSAGE"
+              }
+            }
+          }
           readiness_probe {
             http_get {
               path = "/health"
@@ -104,5 +112,16 @@ resource "kubernetes_service" "app" {
     }
 
     type = "ClusterIP"
+  }
+}
+
+resource "kubernetes_config_map" "app_config" {
+  metadata {
+    name      = "hello-app-config"
+    namespace = kubernetes_namespace.demo.metadata[0].name
+  }
+
+  data = {
+    APP_MESSAGE = "Hello from ConfigMap"
   }
 }

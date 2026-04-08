@@ -35,5 +35,7 @@ jobs:
         with:
           context: ./app
           push: true
-          tags: ghcr.io/mtbagatur/hello-app:latest
+          tags: |
+            ghcr.io/mtbagatur/hello-app:latest
+            ghcr.io/mtbagatur/hello-app:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
