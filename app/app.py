@@ -11,7 +11,9 @@ def home():
         "hostname": socket.gethostname(),
         "environment": os.getenv("APP_ENV", "dev"),
         "version": os.getenv("APP_VERSION", "1.0.0"),
-        "config_message": os.getenv("APP_MESSAGE", "no-config")
+        "config_message": os.getenv("APP_MESSAGE", "no-config"),
+        "secret": os.getenv("SECRET_KEY", "no-secret"),
+        "version": "2.0.0"
     }
 
 @app.route("/health")
