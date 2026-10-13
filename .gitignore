@@ -7,10 +7,12 @@ __pycache__/
 venv/
 
 # Terraform
-infra/kubernetes/.terraform/
+**/.terraform/
 infra/kubernetes/.terraform.lock.hcl
-infra/kubernetes/*.tfstate
-infra/kubernetes/*.tfstate.*
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform.tfstate.lock.info
 infra/kubernetes/crash.log
 infra/kubernetes/override.tf
 infra/kubernetes/override.tf.json
